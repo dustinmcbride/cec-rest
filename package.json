@@ -1,0 +1,57 @@
+{
+  "name": "cec-rest",
+  "version": "1.0.0",
+  "description": "A simple rest wrapper for cec-controller",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "npx nodemon src/index.js",
+    "cp": "rsync -avz -e ssh --exclude node_modules . pi@192.168.0.55:/home/pi/node-services/cec-rest",
+    "precommit": "lint-staged"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cec-controller": "^1.4.0",
+    "eslint-plugin-jest": "^25.3.0",
+    "nodemon": "^2.0.15",
+    "restify": "^8.6.0",
+    "ws": "^8.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "jest": "^27.3.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,vue}": [
+      "eslint --fix -c .eslintrc.js",
+      "git add"
+    ],
+    "*.ts": [
+      "tslint --fix -c tslint.json --force",
+      "prettier --write",
+      "git add"
+    ],
+    "*.vue": [
+      "stylelint --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.css": [
+      "stylelint --fix",
+      "git add"
+    ],
+    "*.less": [
+      "stylelint --fix --syntax=less",
+      "git add"
+    ],
+    "*.scss": [
+      "stylelint --fix --syntax=scss",
+      "git add"
+    ]
+  }
+}
